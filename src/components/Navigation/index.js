@@ -18,6 +18,10 @@ function Navigation() {
         {
             displayName: "Extreme",
             href: "extreme"
+        },
+        {
+            displayName: "High Scores",
+            href: "high_scores"
         }
     ];
     return (

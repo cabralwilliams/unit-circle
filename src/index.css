@@ -312,6 +312,15 @@ footer {
   }
 }
 
+/* Font Styles */
+.blue-pill-font {
+    color: var(--blue-pill);
+}
+
+.red-pill-font {
+    color: var(--red-pill);
+}
+
 @media screen and (max-width: 450px) {
   .flex-image img {
       max-width: 350px;

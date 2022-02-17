@@ -1,5 +1,6 @@
 import React from 'react';
 import Radical from '../Radical';
+import { sines, cosines, tangents, cosecants } from '../../utils/trigonometryValues';
 
 function Fraction(props) {
     let preface = props.isNegative ? "-" : "";
