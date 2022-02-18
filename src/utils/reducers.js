@@ -1,8 +1,9 @@
-import { UPDATE_TIME, RESET_TIME, SET_MODE, RESET_DEFAULTS } from "./actions";
+import { UPDATE_TIME, RESET_TIME, SET_MODE, RESET_DEFAULTS, LOAD_BUTTONS } from "./actions";
 
 const initialState = {
     timeLeft: 120000,
-    gameMode: null
+    gameMode: null,
+    buttonValues: []
 }
 
 const reducer = (state, action) => {
@@ -15,6 +16,8 @@ const reducer = (state, action) => {
             return { ...state, gameMode: action.gameMode };
         case RESET_DEFAULTS:
             return { initialState };
+        case LOAD_BUTTONS:
+            return { ...state, buttonValues: action.buttonValues };
         default:
             return state;
     }

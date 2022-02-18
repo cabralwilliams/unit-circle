@@ -12,6 +12,10 @@ function Navigation() {
             href: "/easy"
         },
         {
+            displayName: "Medium",
+            href: "/medium"
+        },
+        {
             displayName: "Hard",
             href: "hard"
         },

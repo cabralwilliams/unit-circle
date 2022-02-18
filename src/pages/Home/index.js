@@ -11,6 +11,10 @@ function Homepage() {
             description: <p>Easy Unit Circle questions will only ask questions about sine and cosine values of positive angles between 0&deg; and 360&deg; (0 - 2&pi; radians).</p>
         },
         {
+            sectionName: "Medium",
+            description: <p>Medium Unit Circle questions include everything from the Easy mode but also include the tangent function values.</p>
+        },
+        {
             sectionName: "Hard",
             description: <p>Hard Unit Circle questions have the same angle constraints as do the Easy questions but will also ask about tangent, cotangent, secant, and cosecant values.</p>
         },

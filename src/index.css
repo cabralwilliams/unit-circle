@@ -313,13 +313,90 @@ footer {
 }
 
 /* Font Styles */
-.blue-pill-font {
+.blue-pill-font-28-20 {
     color: var(--blue-pill);
+    font-size: 1.17em;
 }
 
-.red-pill-font {
+.red-pill-font-28-20 {
     color: var(--red-pill);
+    font-size: 1.17em;
 }
+
+.font-color-blackish {
+    color: var(--bgBlackish);
+}
+
+.font-size-28-20 {
+    font-size: 28px;
+}
+/* End Font Styles */
+
+/* Spacing Styles */
+.margins-40-20 {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.margins-30-15 {
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.bottom-margin-40-20 {
+    margin-bottom: 40px;
+}
+
+.top-margin-40-20 {
+    margin-top: 40px;
+}
+
+.bottom-buffer-40-20 {
+    padding-bottom: 40px;
+}
+
+.vertical-buffer-20-10 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+/* End Spacing Styles */
+
+.flex-row-align-center {
+    display: flex;
+    /* justify-content: space-evenly; */
+    align-items: center;
+}
+
+/* Fraction Decoration */
+.overline {
+    text-decoration: overline var(--greenCode);
+}
+
+.bottom-border-2 {
+    border-bottom: solid var(--greenCode) 2px;
+}
+
+.bottom-border-blackish {
+    border-bottom: solid var(--bgBlackish) 2px;
+}
+
+.font-size-1 {
+    font-size: 28px;
+}
+
+.font-size-2 {
+    font-size: 20px;
+}
+
+.font-size-3 {
+    font-size: 44px;
+}
+
+.font-size-4 {
+    font-size: 32px;
+}
+
+/* End Fraction Decoration */
 
 @media screen and (max-width: 450px) {
   .flex-image img {

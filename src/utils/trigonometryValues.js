@@ -350,6 +350,182 @@ export const cosecants = [
     }
 ];
 
+export const secants = [
+    {
+        rational: true,
+        numerator: 1,
+        denominator: 1
+    },
+    {
+        rational: false,
+        numerator: 23,
+        denominator: 3
+    },
+    {
+        rational: false,
+        numerator: 2,
+        denominator: 1
+    },
+    {
+        rational: true,
+        numerator: 2,
+        denominator: 1
+    },
+    {
+        rational: true,
+        numerator: Infinity,
+        denominator: 1
+    },
+    {
+        rational: true,
+        numerator: -2,
+        denominator: 1
+    },
+    {
+        rational: false,
+        numerator: -2,
+        denominator: 1
+    },
+    {
+        rational: false,
+        numerator: -23,
+        denominator: 3
+    },
+    {
+        rational: true,
+        numerator: -1,
+        denominator: 1
+    },
+    {
+        rational: false,
+        numerator: -23,
+        denominator: 3
+    },
+    {
+        rational: false,
+        numerator: -2,
+        denominator: 1
+    },
+    {
+        rational: true,
+        numerator: -2,
+        denominator: 1
+    },
+    {
+        rational: true,
+        numerator: Infinity,
+        denominator: 1
+    },
+    {
+        rational: true,
+        numerator: 2,
+        denominator: 1
+    },
+    {
+        rational: false,
+        numerator: 2,
+        denominator: 1
+    },
+    {
+        rational: false,
+        numerator: 23,
+        denominator: 3
+    },
+    {
+        rational: true,
+        numerator: 1,
+        denominator: 1
+    }
+];
+
+export const cotangents = [
+    {
+        rational: true,
+        numerator: Infinity,
+        denominator: 1
+    },
+    {
+        rational: false,
+        numerator: 3,
+        denominator: 1
+    },
+    {
+        rational: true,
+        numerator: 1,
+        denominator: 1
+    },
+    {
+        rational: false,
+        numerator: 3,
+        denominator: 3
+    },
+    {
+        rational: true,
+        numerator: 0,
+        denominator: 1
+    },
+    {
+        rational: false,
+        numerator: -3,
+        denominator: 3
+    },
+    {
+        rational: true,
+        numerator: -1,
+        denominator: 1
+    },
+    {
+        rational: false,
+        numerator: -3,
+        denominator: 1
+    },
+    {
+        rational: true,
+        numerator: Infinity,
+        denominator: 1
+    },
+    {
+        rational: false,
+        numerator: 3,
+        denominator: 1
+    },
+    {
+        rational: true,
+        numerator: 1,
+        denominator: 1
+    },
+    {
+        rational: false,
+        numerator: 3,
+        denominator: 3
+    },
+    {
+        rational: true,
+        numerator: 0,
+        denominator: 1
+    },
+    {
+        rational: false,
+        numerator: -3,
+        denominator: 3
+    },
+    {
+        rational: true,
+        numerator: -1,
+        denominator: 1
+    },
+    {
+        rational: false,
+        numerator: -3,
+        denominator: 1
+    },
+    {
+        rational: true,
+        numerator: Infinity,
+        denominator: 1
+    }
+];
+
 export const angles = [
     {
         degrees: 0,
