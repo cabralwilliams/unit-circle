@@ -365,11 +365,16 @@ footer {
     display: flex;
     /* justify-content: space-evenly; */
     align-items: center;
+    flex-wrap: wrap;
 }
 
 /* Fraction Decoration */
 .overline {
     text-decoration: overline var(--greenCode);
+}
+
+.overline-blackish {
+    text-decoration: overline var(--bgBlackish);
 }
 
 .bottom-border-2 {
@@ -394,6 +399,14 @@ footer {
 
 .font-size-4 {
     font-size: 32px;
+}
+
+.font-size-5 {
+    font-size: 24px;
+}
+
+.font-size-6 {
+    font-size: 17px;
 }
 
 /* End Fraction Decoration */

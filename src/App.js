@@ -7,6 +7,7 @@ import Medium from './pages/Medium';
 import Hard from './pages/Hard';
 import Extreme from './pages/Extreme';
 import Footer from './components/Footer';
+import HighScores from './pages/HighScores';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { store } from './utils/store';
 import { Provider } from 'react-redux';
@@ -24,6 +25,7 @@ function App() {
 							<Route path='/medium' element={<Medium />} />
 							<Route path='/hard' element={<Hard />} />
 							<Route path='/extreme' element={<Extreme />} />
+							<Route path='/high_scores' element={<HighScores />} />
 						</Routes>
 					</main>
 					<Footer />

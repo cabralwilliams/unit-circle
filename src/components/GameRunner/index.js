@@ -5,6 +5,8 @@ import { sines, cosines, tangents, cosecants, secants, cotangents, angles } from
 import { LOAD_BUTTONS, RESET_TIME, SET_MODE } from '../../utils/actions';
 import GameButton from '../GameButton';
 import TrigExpression from '../TrigExpression';
+import QuestionResult from '../QuestionResult';
+import { saveData } from '../../utils/saveData';
 
 const allChoices = [sines,cosines,tangents,cosecants,secants,cotangents];
 const functions = ['sin','cos','tan','csc','sec','cot'];
@@ -71,6 +73,10 @@ function GameRunner({ gameMode }) {
     const [gameStats, setGameStats] = useState([]);
     //Game Data - question, answer, etc
     const [gameData, setGameData] = useState([]);
+    //Max streak
+    const [maxStreak, setMaxStreak] = useState(0);
+    //Max Individual Score
+    const [maxScore, setMaxScore] = useState(0);
 
     const state = useSelector(globalState => {
         return { timeLeft: globalState.timeLeft, gameMode: globalState.gameMode, buttonValues: globalState.buttonValues };
@@ -245,6 +251,7 @@ function GameRunner({ gameMode }) {
         let timeEllapsed = referenceTime - state.timeLeft;
         setReferenceTime(state.timeLeft);
         console.log(timeEllapsed/1000);
+        let awardedPoints = 0;
         if(buttonId !== 0) {
             setStreak(0);
         } else {
@@ -258,18 +265,26 @@ function GameRunner({ gameMode }) {
             } else if(correctCount === fibonacci[fibPos + 1]) {
                 setFibPos(fibPos + 1);
             }
-            let awardedPoints = Math.floor(fibonacci[fibPos]/(timeEllapsed/1000)*streak);
+            awardedPoints = Math.floor(fibonacci[fibPos]/(timeEllapsed/1000)*streak);
             if(awardedPoints === 0) {
                 awardedPoints = 1;
             }
             setScore(score + awardedPoints);
             console.log(score);
             console.log(score + awardedPoints);
+            if(streak > maxStreak) {
+                setMaxStreak(streak);
+            }
+            if(awardedPoints > maxScore) {
+                setMaxScore(awardedPoints);
+            }
         }
         //Reset the buttons and problem
         let storedData = { problemInfo: gameData[gameData.length - 1]};
         storedData.questionStatus = buttonId === 0;
         storedData.ellapsedTime = timeEllapsed;
+        storedData.awardedPoints = awardedPoints;
+        storedData.isNegative = negativeRotation;
         setGameStats([...gameStats, storedData]);
         setFunctionIndex(Math.floor(Math.random()*fIndexLimit));
         setAngleIndex(Math.floor(Math.random()*17));
@@ -283,6 +298,22 @@ function GameRunner({ gameMode }) {
                 <button onClick={startGame}>Begin!</button>
             </div>
         )
+    }
+
+    if(state.timeLeft <= 0) {
+        saveData({ score, maxStreak, correctCount, gameMode, maxScore });
+        return <div className='flex-column'>
+            <div className='flex-column'>
+                <h3 className='font-color-blackish'>Your final score is {score}!</h3>
+                <h3 className='font-color-blackish'>You got {correctCount} of {gameStats.length} questions correct!</h3>
+                <h3 className='font-color-blackish'>Your maximum streak was {maxStreak}!</h3>
+                <h3 className='font-color-blackish'>Your maximum individual score was {maxScore}!</h3>
+                <h3 className='font-color-blackish'>Thanks for playing!</h3>
+            </div>
+            <ol className='font-color-blackish'>
+                {gameStats.map((qData, i) => <QuestionResult key={i} resultOb={qData} />)}
+            </ol>
+        </div>
     }
 
     return (
