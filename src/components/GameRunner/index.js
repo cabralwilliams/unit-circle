@@ -151,10 +151,10 @@ function GameRunner({ gameMode }) {
     //Load the buttons
     useEffect(() => {
         // Determine whether the angle will be a negative rotation
-        if(allowNegatives && gameStats.length > 0) {
-            const negativeAngle = Math.random() < 0.5;
-            setNegativeRotation(negativeAngle);
-        }
+        // if(allowNegatives && gameStats.length > 0) {
+        //     const negativeAngle = Math.random() < 0.5;
+        //     setNegativeRotation(negativeAngle);
+        // }
         // First question will always be sine or cosine and in the first quadrant, 0 - 90
         
         let nextData;
@@ -167,6 +167,11 @@ function GameRunner({ gameMode }) {
         //Will house the next set of buttons
         const newButtons = [];
         let tempCorrect = !negativeRotation ? allChoices[functionIndex][angleIndex] : allChoices[functionIndex][16 - angleIndex];
+        if(negativeRotation) {
+            console.log(allChoices[functionIndex]);
+            console.log(16 - angleIndex);
+            console.log(tempCorrect);
+        }
         const correct = {};
         for(const property in tempCorrect) {
             correct[property] = tempCorrect[property];
@@ -288,6 +293,15 @@ function GameRunner({ gameMode }) {
         setFunctionIndex(Math.floor(Math.random()*fIndexLimit));
         setAngleIndex(Math.floor(Math.random()*17));
         setAngleSelector(Math.floor(Math.random()*2));
+        // Determine whether the angle will be a negative rotation
+        if(allowNegatives && gameStats.length > 0) {
+            const negativeAngle = Math.random() < 0.5;
+            setNegativeRotation(negativeAngle);
+        }
+    }
+
+    function reloadGame() {
+        window.location.reload();
     }
 
     if(!started && state.timeLeft > 0) {
@@ -300,12 +314,14 @@ function GameRunner({ gameMode }) {
     }
 
     if(state.timeLeft <= 0) {
-        saveData({ score, maxStreak, correctCount, gameMode, maxScore });
+        const newMax = correctCount > 0 ? maxStreak + 1 : 0;
+        saveData({ score, maxStreak: newMax, correctCount, gameMode, maxScore });
         return <div className='flex-column'>
+            <button onClick={reloadGame}>Play Again?</button>
             <div className='flex-column'>
                 <h3 className='font-color-blackish'>Your final score is {score}!</h3>
                 <h3 className='font-color-blackish'>You got {correctCount} of {gameStats.length} questions correct!</h3>
-                <h3 className='font-color-blackish'>Your maximum streak was {maxStreak}!</h3>
+                <h3 className='font-color-blackish'>Your maximum streak was {newMax}!</h3>
                 <h3 className='font-color-blackish'>Your maximum individual score was {maxScore}!</h3>
                 <h3 className='font-color-blackish'>Thanks for playing!</h3>
             </div>

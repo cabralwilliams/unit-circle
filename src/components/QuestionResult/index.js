@@ -8,7 +8,8 @@ function QuestionResult({ resultOb }) {
     const trigFunctions = [sines,cosines,tangents,cosecants,secants,cotangents];
     //Element to display correct answer and numerator/denominator (if necessary)
     let numeratorElement, denominatorElement, renderElement;
-    const correctOb = trigFunctions[resultOb.problemInfo.fIndex][resultOb.problemInfo.angIndex];
+    const angIndex = !resultOb.isNegative ? resultOb.problemInfo.angIndex : 16 - resultOb.problemInfo.angIndex;
+    const correctOb = trigFunctions[resultOb.problemInfo.fIndex][angIndex];
     const isNegative = correctOb.numerator < 0;
 
     if(correctOb.denominator === 1) {

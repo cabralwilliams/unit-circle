@@ -14,9 +14,17 @@ function HighScores() {
             <div>Most Correct: {inputData.correctCount.correctCount} | {inputData.correctCount.date}</div>
         </div>
     }
+    function clearData() {
+        localStorage.removeItem("unit_circle_easy");
+        localStorage.removeItem("unit_circle_medium");
+        localStorage.removeItem("unit_circle_hard");
+        localStorage.removeItem("unit_circle_extreme");
+        window.location.reload();
+    }
     return (
         <div className='flex-column'>
             <h2 className='font-color-blackish'>High Scores</h2>
+            <button onClick={clearData}>Clear Scores</button>
             <div className='flex-column font-color-blackish'>
                 <h3>Easy Mode</h3>
                 {easyResults === null ? <div>There are no Easy results yet!</div> : processData(easyResults)}
