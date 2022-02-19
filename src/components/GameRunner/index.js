@@ -150,7 +150,13 @@ function GameRunner({ gameMode }) {
     
     //Load the buttons
     useEffect(() => {
+        // Determine whether the angle will be a negative rotation
+        if(allowNegatives && gameStats.length > 0) {
+            const negativeAngle = Math.random() < 0.5;
+            setNegativeRotation(negativeAngle);
+        }
         // First question will always be sine or cosine and in the first quadrant, 0 - 90
+        
         let nextData;
         if(gameStats.length === 0) {
             nextData = getQuestionData(functionIndex,angleIndex,angleSelector,120000);
@@ -160,7 +166,7 @@ function GameRunner({ gameMode }) {
         setGameData([...gameData, nextData]);
         //Will house the next set of buttons
         const newButtons = [];
-        let tempCorrect = allChoices[functionIndex][angleIndex];
+        let tempCorrect = !negativeRotation ? allChoices[functionIndex][angleIndex] : allChoices[functionIndex][16 - angleIndex];
         const correct = {};
         for(const property in tempCorrect) {
             correct[property] = tempCorrect[property];
@@ -178,10 +184,6 @@ function GameRunner({ gameMode }) {
             for(const property in tempNextChoice) {
                 nextChoice[property] = tempNextChoice[property];
             }
-            // console.log("Correct");
-            // console.log(correct);
-            // console.log("Next");
-            // console.log(nextChoice);
             for(let i = 0; i < tempButtons.length; i++) {
                 let totalMatches = 0;
                 for(const property in nextChoice) {
@@ -195,10 +197,7 @@ function GameRunner({ gameMode }) {
                 }
             }
             if(!matchedValues) {
-                // console.log(correct);
                 nextChoice.answerCode = tempButtons.length;
-                // console.log(correct);
-                // console.log(nextChoice);
                 tempButtons.push(nextChoice);
             }
         }
@@ -242,7 +241,7 @@ function GameRunner({ gameMode }) {
         //         buttonValues: newButtons
         //     });
         // }
-    }, [dispatch,angleIndex,angleSelector,functionIndex,gameStats.length]);
+    }, [dispatch,angleIndex,angleSelector,functionIndex,gameStats.length,allowNegatives]);
 
     
 
@@ -270,8 +269,8 @@ function GameRunner({ gameMode }) {
                 awardedPoints = 1;
             }
             setScore(score + awardedPoints);
-            console.log(score);
-            console.log(score + awardedPoints);
+            // console.log(score);
+            // console.log(score + awardedPoints);
             if(streak > maxStreak) {
                 setMaxStreak(streak);
             }
