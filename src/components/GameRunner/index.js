@@ -168,9 +168,9 @@ function GameRunner({ gameMode }) {
         const newButtons = [];
         let tempCorrect = !negativeRotation ? allChoices[functionIndex][angleIndex] : allChoices[functionIndex][16 - angleIndex];
         if(negativeRotation) {
-            console.log(allChoices[functionIndex]);
-            console.log(16 - angleIndex);
-            console.log(tempCorrect);
+            // console.log(allChoices[functionIndex]);
+            // console.log(16 - angleIndex);
+            // console.log(tempCorrect);
         }
         const correct = {};
         for(const property in tempCorrect) {
@@ -209,52 +209,22 @@ function GameRunner({ gameMode }) {
         for(let i = 0; i < 4; i++) {
             newButtons.push(tempButtons[buttonOrder[i]]);
         }
-        console.log(newButtons);
-        console.log([newButtons[0].numerator < 0,newButtons[1].numerator < 0,newButtons[2].numerator < 0,newButtons[3].numerator < 0]);
+        // console.log(newButtons);
+        // console.log([newButtons[0].numerator < 0,newButtons[1].numerator < 0,newButtons[2].numerator < 0,newButtons[3].numerator < 0]);
         dispatch({
             type: LOAD_BUTTONS,
             buttonValues: newButtons
         });
-        // if(state.buttonValues.length === 0) {
-        //     //Will insert logic to pick buttons based on game conditions later
-        //     const newButtons = [];
-        //     while(newButtons.length < 4) {
-        //         let funcNo = Math.floor(Math.random()*4);
-        //         let matchedValues = false;
-        //         let nextChoice = allChoices[funcNo][Math.floor(Math.random()*allChoices[funcNo].length)];
-        //         for(let i = 0; i < newButtons.length; i++) {
-        //             let totalMatches = 0;
-        //             for(const property in nextChoice) {
-        //                 if(nextChoice[property] === newButtons[i][property]) {
-        //                     totalMatches++;
-        //                 }
-        //             }
-        //             if(totalMatches === 3) {
-        //                 matchedValues = true;
-        //                 break;
-        //             }
-        //         }
-        //         if(!matchedValues) {
-        //             newButtons.push(nextChoice);
-        //         }
-        //     }
-
-        //     console.log(newButtons);
-        //     console.log([newButtons[0].numerator < 0,newButtons[1].numerator < 0,newButtons[2].numerator < 0,newButtons[3].numerator < 0]);
-        //     dispatch({
-        //         type: LOAD_BUTTONS,
-        //         buttonValues: newButtons
-        //     });
-        // }
+        
     }, [dispatch,angleIndex,angleSelector,functionIndex,gameStats.length,allowNegatives]);
 
     
 
     function checkAndChoose(buttonId) {
-        console.log(`Button ${buttonId} was pushed!`);
+        // console.log(`Button ${buttonId} was pushed!`);
         let timeEllapsed = referenceTime - state.timeLeft;
         setReferenceTime(state.timeLeft);
-        console.log(timeEllapsed/1000);
+        // console.log(timeEllapsed/1000);
         let awardedPoints = 0;
         if(buttonId !== 0) {
             setStreak(0);

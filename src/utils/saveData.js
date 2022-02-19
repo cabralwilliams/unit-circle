@@ -3,9 +3,9 @@ export function saveData(results) {
     let storedData = JSON.parse(localStorage.getItem(`unit_circle_${results.gameMode}`)) || null;
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const today = new Date();
-    console.log(months[today.getMonth()]);
+    // console.log(months[today.getMonth()]);
     
-    console.log(today.toDateString())
+    // console.log(today.toDateString())
     const dateString = `${months[today.getMonth()]} ${today.getDate()}, ${today.getFullYear()}`;
     if(!storedData) {
         const toSave = { score: { score: results.score, date: dateString }, maxStreak: { maxStreak: results.maxStreak, date: dateString }, correctCount: { correctCount: results.correctCount, date: dateString }, maxScore: { maxScore: results.maxScore, date: dateString } };

@@ -4,7 +4,7 @@ import { sines, cosines, tangents, cosecants, secants, cotangents, angles } from
 
 
 function QuestionResult({ resultOb }) {
-    console.log(resultOb);
+    // console.log(resultOb);
     const trigFunctions = [sines,cosines,tangents,cosecants,secants,cotangents];
     //Element to display correct answer and numerator/denominator (if necessary)
     let numeratorElement, denominatorElement, renderElement;
