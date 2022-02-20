@@ -11,22 +11,29 @@ import HighScores from './pages/HighScores';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { store } from './utils/store';
 import { Provider } from 'react-redux';
+import { useState } from 'react';
 
 function App() {
+	const [selectedLink, setSelectedLink] = useState('/');
+	console.log(selectedLink);
 	return (
 		<Router>
 			<div className="App">
 				<Provider store={store}>
-					<Header />
+					<Header selectedLink={selectedLink} setSelectedLink={setSelectedLink} />
 					<main className='site-content bottom-buffer-40-20'>
-						<Routes>
-							<Route exact path='/' element={<Homepage />} />
+						{selectedLink === '/' && <Homepage selectedLink={selectedLink} setSelectedLink={setSelectedLink} />}
+						{selectedLink === '/easy' && <Easy />}
+						{selectedLink === '/medium' && <Medium />}
+						{selectedLink === '/hard' && <Hard />}
+						{selectedLink === '/extreme' && <Extreme />}
+						{selectedLink === '/high_scores' && <HighScores />}
+							{/* <Route exact path='/' element={<Homepage />} />
 							<Route path='/easy' element={<Easy />} />
 							<Route path='/medium' element={<Medium />} />
 							<Route path='/hard' element={<Hard />} />
 							<Route path='/extreme' element={<Extreme />} />
-							<Route path='/high_scores' element={<HighScores />} />
-						</Routes>
+							<Route path='/high_scores' element={<HighScores />} /> */}
 					</main>
 					<Footer />
 				</Provider>

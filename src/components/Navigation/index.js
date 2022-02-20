@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-function Navigation() {
+function Navigation({ selectedLink, setSelectedLink }) {
     const links = [
         {
             displayName: "Home",
@@ -17,23 +16,29 @@ function Navigation() {
         },
         {
             displayName: "Hard",
-            href: "hard"
+            href: "/hard"
         },
         {
             displayName: "Extreme",
-            href: "extreme"
+            href: "/extreme"
         },
         {
             displayName: "High Scores",
-            href: "high_scores"
+            href: "/high_scores"
         }
     ];
+
+    function sendTheLink(event) {
+        event.preventDefault();
+        const targetEl = event.target;
+        setSelectedLink(targetEl.getAttribute('href'));
+    }
     return (
         <nav id='site-nav'>
             <ul className='flex-row' id='main-ul'>
                 {
                     links.map((link, i) => {
-                        return <li key={i} className='flex-row-li'><Link to={link.href}>{link.displayName}</Link></li>
+                        return <li key={i} className='flex-row-li'><a href={link.href} className={link.href === selectedLink ? 'navActive' : ''} onClick={sendTheLink}>{link.displayName}</a></li>
                     })
                 }
             </ul>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { RESET_DEFAULTS } from '../../utils/actions';
 
-function Homepage() {
+function Homepage({ selectedLink, setSelectedLink }) {
     
     const sectionDescriptions = [
         {
@@ -23,13 +23,19 @@ function Homepage() {
             description: <p>Extreme Unit Circle questions extend the angle constraints of Hard questions to -360&deg; (-2&pi; radians).</p>
         }
     ];
+
+    function sendTheLink(event) {
+        event.preventDefault();
+        const targetEl = event.target.parentElement;
+        setSelectedLink(targetEl.getAttribute('href'));
+    }
     return (
         <div>
             {
                 sectionDescriptions.map((secD, i) => {
                     return(
                         <div key={i}>
-                            <Link to={`/${secD.sectionName.toLowerCase()}`}><h2>{secD.sectionName}</h2></Link>
+                            <a href={`/${secD.sectionName.toLowerCase()}`} onClick={sendTheLink}><h2>{secD.sectionName}</h2></a>
                             {secD.description}
                         </div>
                     )

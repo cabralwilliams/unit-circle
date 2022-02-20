@@ -1,4 +1,4 @@
-import { UPDATE_TIME, RESET_TIME, SET_MODE, RESET_DEFAULTS, LOAD_BUTTONS } from "./actions";
+import { UPDATE_TIME, RESET_TIME, SET_MODE, RESET_DEFAULTS, LOAD_BUTTONS, SET_LINK } from "./actions";
 
 const initialState = {
     timeLeft: 120000,
@@ -18,6 +18,8 @@ const reducer = (state, action) => {
             return { initialState };
         case LOAD_BUTTONS:
             return { ...state, buttonValues: action.buttonValues };
+        case SET_LINK:
+            return { ...state, selectedLink: action.selectedLink };
         default:
             return state;
     }
