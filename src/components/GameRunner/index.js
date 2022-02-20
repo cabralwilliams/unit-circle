@@ -36,7 +36,7 @@ function reorderInts(intLimit = 4) {
     return output;
 }
 
-function GameRunner({ gameMode }) {
+function GameRunner({ gameMode, setSelectedLink }) {
     // Stores the reference time
     const [referenceTime, setReferenceTime] = useState(120000);
     // Keeps record of number correct
@@ -274,6 +274,10 @@ function GameRunner({ gameMode }) {
         window.location.reload();
     }
 
+    function seeHighScores() {
+        setSelectedLink('/high_scores');
+    }
+
     if(!started && state.timeLeft > 0) {
         return (
             <div className='flex-column'>
@@ -287,7 +291,10 @@ function GameRunner({ gameMode }) {
         const newMax = correctCount > 0 ? maxStreak + 1 : 0;
         saveData({ score, maxStreak: newMax, correctCount, gameMode, maxScore });
         return <div className='flex-column'>
-            <button onClick={reloadGame}>Play Again?</button>
+            <div className='flex-row'>
+                <button onClick={reloadGame}>Back Home</button>
+                <button onClick={seeHighScores}>See High Scores</button>
+            </div>
             <div className='flex-column'>
                 <h3 className='font-color-blackish'>Your final score is {score}!</h3>
                 <h3 className='font-color-blackish'>You got {correctCount} of {gameStats.length} questions correct!</h3>

@@ -23,10 +23,10 @@ function App() {
 					<Header selectedLink={selectedLink} setSelectedLink={setSelectedLink} />
 					<main className='site-content bottom-buffer-40-20'>
 						{selectedLink === '/' && <Homepage selectedLink={selectedLink} setSelectedLink={setSelectedLink} />}
-						{selectedLink === '/easy' && <Easy />}
-						{selectedLink === '/medium' && <Medium />}
-						{selectedLink === '/hard' && <Hard />}
-						{selectedLink === '/extreme' && <Extreme />}
+						{selectedLink === '/easy' && <Easy setSelectedLink={setSelectedLink} />}
+						{selectedLink === '/medium' && <Medium setSelectedLink={setSelectedLink} />}
+						{selectedLink === '/hard' && <Hard setSelectedLink={setSelectedLink} />}
+						{selectedLink === '/extreme' && <Extreme setSelectedLink={setSelectedLink} />}
 						{selectedLink === '/high_scores' && <HighScores />}
 							{/* <Route exact path='/' element={<Homepage />} />
 							<Route path='/easy' element={<Easy />} />
